@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 class ContainsDuplicate {
@@ -54,5 +55,20 @@ class ContainsDuplicate {
         }
 
         return false;
+    }
+
+    public static boolean hasDuplicateMoreOptimized(int[] nums) {
+        HashSet<Integer> seenElements = new HashSet<>(); // set to contain unique values
+
+        for (int num : nums) {
+            if (seenElements.contains(num)) { // iterate over each number and check that if it exists already in the set, if it does return true and exit
+                return true;
+            }
+            else {
+                seenElements.add(num); // if number does not exist add it to set
+            }
+        }
+
+        return false; // return false if after iterating through all the elements and no duplicate if found
     }
 }
